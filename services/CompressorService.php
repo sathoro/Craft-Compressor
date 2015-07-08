@@ -22,7 +22,7 @@ class CompressorService extends BaseApplicationComponent
     public function __construct()
     {
         $this->document_root = $_SERVER['DOCUMENT_ROOT'];
-        $this->cache_dir = $this->document_root . "/cache";
+        $this->cache_dir = realpath(IOHelper::getFolder(__FILE__)) . "/cache";
         $this->cache_url = $this->makeBaseCacheUrl();
 
         IOHelper::ensureFolderExists($this->cache_dir);
