@@ -110,6 +110,7 @@ class CompressorService extends BaseApplicationComponent
       }
       else if ($recache['recache'] === true)
       {
+
         $cached_file = $this->makeCachePath("cached." . $recache['md5'] . ".css");
 
         $css_content = "";
@@ -118,6 +119,15 @@ class CompressorService extends BaseApplicationComponent
         {
           $file = ($this->isLocalFile($file)) ?  $this->document_root . '/' . ltrim($file, '/') : $file;
           $css_content .= file_get_contents($file);
+        }
+
+        // Get find/replace pairs
+        $searchReplacePairs = func_get_args();
+        array_shift($searchReplacePairs);
+
+        foreach ($searchReplacePairs as $searchReplace) {
+          if (!is_array($searchReplace)) { continue; }
+            $css_content = str_replace($searchReplace[0], $searchReplace[1], $css_content);
         }
 
         $css = trim($css_content);
