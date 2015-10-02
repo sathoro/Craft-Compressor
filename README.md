@@ -39,7 +39,7 @@ Adding array pairs as extra parameters to the CSS compressor will perform a sear
 			'/style/media-queries.css'
 		],
 		["fonts/", "../fonts/"],
-		["images/", "../images/"],
+		["images/", "../images/"]
 	) }}
 
 
