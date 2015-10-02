@@ -28,6 +28,22 @@ Will output:
 
 When any CSS or JS file is updated or removed the file will be generated with a new hash and filename.
 
+Path Replacement in CSS
+================
+
+Adding array pairs as extra parameters to the CSS compressor will perform a search/replace with those strings. Useful for paths that break once files are inside the cache folder.
+
+	{{ craft.compressor.css(
+		[
+			'/style/style.css',
+			'/style/media-queries.css'
+		],
+		["fonts/", "../fonts/"],
+		["images/", "../images/"]
+	) }}
+
+
+
 Setup
 ================
 

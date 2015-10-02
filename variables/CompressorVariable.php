@@ -16,7 +16,7 @@ class CompressorVariable
 {
     public function css($files)
     {
-        return craft()->compressor->css($files);
+        return call_user_func_array([craft()->compressor, "css"], func_get_args());
     }
 
     public function js($files)
